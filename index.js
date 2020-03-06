@@ -11,6 +11,7 @@ clearGridBtn.addEventListener('click', () => {
 
 generateGridBtn.addEventListener('click', () => {
     let numSquares = prompt("How many squares should each side have?");
+    container.textContent = '';
     createGrid(numSquares,numSquares);
 });
 
@@ -31,9 +32,12 @@ function createGrid(widthSquares=4, heightsquares=4) {
             let widthPx = 720/widthSquares;
             squareDiv.style.width = widthPx.toString();
             squareDiv.style.height = widthPx.toString();
+            squareDiv.style.backgroundColor = 'black';
+            squareDiv.style.opacity = 0;
             squareDiv.addEventListener('mouseover', () => {
-                squareDiv.style.backgroundColor = 'black';
-
+                let currentOpacity = squareDiv.style.opacity;
+                squareDiv.style.opacity = Number(Number(currentOpacity)+0.1);
+                console.log(currentOpacity);
             });
             lineDiv.appendChild(squareDiv);
             squaresPerLine += 1;
